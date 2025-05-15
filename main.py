@@ -2,7 +2,6 @@ import tkinter as tk
 from tkinter import filedialog, messagebox
 import matplotlib.pyplot as plt
 import csv
-import time
 
 
 class TaxiManager:
@@ -122,10 +121,18 @@ class TaxiApp:
 
 
 if __name__ == "__main__":
-    star_time = time.perf_counter()
     root = tk.Tk()
+    
+     screen_width = root.winfo_screenwidth()
+    screen_height = root.winfo_screenheight()
+
+    window_width = 300
+    window_height = 200
+
+    x = (screen_width // 2) - (window_width // 2)
+    y = (screen_height // 2) - (window_height // 2)
+
+    root.geometry(f"{window_width}x{window_height}+{x}+{y}")
     app = TaxiApp(root)
-    end_time = time.perf_counter()
-    final_time = end_time - star_time
     print(f"Время работы программы: {final_time:.2f} секунд")
     root.mainloop()
